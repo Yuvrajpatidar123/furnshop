@@ -24,6 +24,15 @@
             margin-top: 30px;
         }
         
+        p {
+            font-size: 20px;
+            color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
         table {
             width: 100%;
             table-layout: auto;
@@ -122,6 +131,7 @@
     <section>
         <!--for demo wrap-->
         <h1><u>Shopping Cart Details</u></h1>
+        <p>The total items in cart {{totalitem}}.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
             <a href="userhome"><button class="btn btn-primary" type="button" style="margin: 10px;">Add More Items</button></a>
@@ -131,11 +141,13 @@
                 <thead>
 
                     <tr>
-                        <!-- <th><i class="fa fa-user-circle-o" aria-hidden="true" style="align-items: center; font-size: xx-large;"></i></th> -->
+
                         <th>Image</th>
                         <th>Product Name</th>
                         <th>Price</th>
-                        <th>Action</th>
+                        <th>Quantity</th>
+
+                        <th colspan="4">Action</th>
                     </tr>
 
                 </thead>
@@ -148,6 +160,11 @@
                         <td> <img src="/media//{{c.image}}" width="100px" height="100px"></td>
                         <td>{{c.productname}}</td>
                         <td>{{c.price}}</td>
+                        <td>{{c.quantity}}</td>
+                        <td><button type="button" class=" minus-cart btn btn-primary" value="-">-</button></td>
+                        <td><span id="quantity">{{c.quantity}}
+                        </span></td>
+                        <td><button type="button" class=" plus-cart btn btn-primary" value="+">+</button></td>
                         <td>
                             <a class="fa fa-trash-o" style="color: red; align-items: center; font-size: large;" href="{% url 'remove' c.id %}"></a>
                         </td>

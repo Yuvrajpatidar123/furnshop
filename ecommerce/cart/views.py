@@ -9,14 +9,18 @@ def add_to_cart(request, product_id):
         productname = p.product_name
         price = p.price
         image = p.image
-
-        cart=Cart(productname=productname, price=price,image=image)
-        cart.save()
-        return redirect('userhome')
+        try:
+            cart = Cart.objects.get(productname=productname)
+            return redirect('cart')
+        except:
+            cart=Cart(productname=productname, price=price,image=image)
+            cart.save()
+            return redirect('userhome')
     
 def cart(request):
+    totalitem = Cart.objects.all().count()
     cart = Cart.objects.all()
-    return render(request,'cart.html',{'cart':cart})
+    return render(request,'cart.html',{'cart':cart,'totalitem':totalitem})
 
 def remove(request,cart_id):
     c = Cart.objects.get(id = cart_id)

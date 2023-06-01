@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'product',
-    'cart'
+    'cart',
 
 
 
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecommerce',
+        'NAME': 'furniture',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
