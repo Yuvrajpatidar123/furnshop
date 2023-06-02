@@ -119,12 +119,12 @@
                         <span class="fa fa-star"></span>
                         <p class="card-text">{{prods.desc|slice:"0:50"}}...</p>
                         <h6 class="card-title">Price : <span id="#">{{prods.price}}</span>/-</h6>
-                        {% if user.is_authenticated%}
-                        <a href="{% url 'add_to_cart' prods.id %}" type="button" class="btn btn-primary" style=" margin-left: 15%;">Add to Cart</a>
-                        <a href="{% url 'prodview' prods.id %}" type="button" class="btn btn-primary" style=" margin-left: 15%;">View</a> {% else%}
 
-                        <a href="signup"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="{% url 'prodview' prods.id %}"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">View</button></a> {%endif%}
+
+                        <a href="{% url 'add_to_cart' prods.id %}" type="button" class="btn btn-warning" style=" margin-left: 15%;">Add to Cart</a>
+                        <a href="{% url 'prodview' prods.id %}" type="button" class="btn btn-primary" style=" margin-left: 15%;">View</a>
+                        <!-- <a href="{% url 'add_to_cart' prods.id %}"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">Add to Cart</button></a> -->
+                        <!-- <a href="{% url 'prodview' prods.id %}"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">View</button></a>-->
                     </div>
                 </div>
             </div>

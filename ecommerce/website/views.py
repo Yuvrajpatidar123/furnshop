@@ -5,16 +5,20 @@ from .models import Contact
 from cart.models import Cart
 # Create your views here.
 def index(request):
-    # num = Cart.objects.all().count
-    return render(request,'index.html')
+    totalitem = Cart.objects.all().count()
+    return render(request,'index.html',{'totalitem':totalitem})
 def home(request):
-    return render(request,'home.html')
+    totalitem = Cart.objects.all().count()
+    return render(request,'home.html',{'totalitem':totalitem})
 def signup(request):
-    return render(request,'signup.html')
+    totalitem = Cart.objects.all().count()
+    return render(request,'signup.html',{'totalitem':totalitem})
 def signin(request):
-    return render(request,'signin.html')
+    totalitem = Cart.objects.all().count()
+    return render(request,'signin.html',{'totalitem':totalitem})
 def contactus(request):
-    return render(request,'contactus.html')
+    totalitem = Cart.objects.all().count()
+    return render(request,'contactus.html',{'totalitem':totalitem})
 def signuppage(request):
     if request.method=='POST':
 
@@ -43,6 +47,7 @@ def signinpage(request):
         user = auth.authenticate(username=usname,password=pas)
         if user is not None:
             auth.login(request,user)
+            
             return redirect('userhome',)
         else:
             return render(request,'signup.html')
@@ -50,10 +55,13 @@ def signinpage(request):
         return render(request,'home.html')
 
 def userhome(request):
+
     return render(request,'userhome.html') 
 def logout(request):
+    totalitem = Cart.objects.all().count()
     auth.logout(request)
-    return render(request,'home.html')       
+
+    return render(request,'home.html',{'totalitem':totalitem})       
 def contactpage(request):
     if request.method=="POST":
         name = request.POST['name']
