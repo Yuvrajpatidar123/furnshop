@@ -128,10 +128,11 @@
 </head>
 
 <body>
-    {% if user.is_authenticated%}
+
     <section>
         <!--for demo wrap-->
         <h1><u>Shopping Cart Details</u></h1>
+        <p>Your Cart is empty.</p>
         <p>The total items in cart {{totalitem}}.</p>
         <div class="text-center">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -155,92 +156,13 @@
                     </thead>
                     <tbody>
 
-                        {% for c in cart %}
-                        <tr>
-                            <!-- <td><i class="fa fa-user-circle-o" aria-hidden="true" style="align-items: center; font-size: xx-large;"></i></td> -->
 
-                            <td> <img src="/media//{{c.image}}" width="100px" height="100px"></td>
-                            <td>{{c.productname}}</td>
-                            <td>{{c.price}}</td>
-                            <td>{{c.quantity}}</td>
-                            <td><a href="{% url 'minus_cart' c.id %}"><button type="button"  class=" minus-cart btn btn-primary" value="-">-</button></a></td>
-                            <td><span id="quantity">{{c.quantity}}</span></td>
-                            <td>
-                                <a href="{% url 'plus_cart' c.id %}"><button type="button" class=" plus-cart btn btn-primary" value="+">+</button></a></td>
-                            <td>
-                                <a class="fa fa-trash-o" style="color: red; align-items: center; font-size: large;" href="{% url 'remove' c.id %}"></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
 
-                <a href="#"><button class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModal" style="margin: 10px;">Check Out</button></a>
-                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
-                <!-- Launch demo modal -->
-                <!-- </button> -->
-            </div>
-
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Place your Order</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{%url 'ordersave'%}" method="post">
-                            {%csrf_token%}
-                            <div class="form-group mt-3">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <label>Email</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <label>Mobile</label>
-                                <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile Number" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <label>Address</label>
-                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Place order</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-primary">Place order</button>
-                    </div> -->
-                </div>
-            </div>
         </div>
     </section>
-    {% else%}
-
-    <section>
-        <!--for demo wrap-->
-        <!-- <h1><u>Shopping Cart Details</u></h1> -->
-        <p style="margin-top: 100px; font-size: xx-large;">Please sign in/Singn up</p>
-        <div class="text-center">
-            <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-            <a href="signin"><button class="btn btn-warning" type="button" style="margin: 10px;">Signin your account</button></a>
-            <a href="signup"> <button type="button" class="btn btn-light" style="margin: 10px;">Signup your account</button></a>
-        </div>
-        <!-- <div class="d-grid gap-2 d-md-flex">
-            
-        </div> -->
-
-    </section>
-    {%endif%}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
