@@ -41,6 +41,28 @@
             align-items: center;
         }
         
+        .card-img-top {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            height: 350px;
+        }
+        
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: 0.25rem;
+            height: 500px;
+        }
+        
         .my-form {
             color: #305896;
         }
@@ -73,111 +95,85 @@
     <div class="card-group">
         <h1 style="font-family: 'Times New Roman', Times, serif; padding: 15px;">Produsts</h1>
         <div class="row row-cols-1 row-cols-md-3">
+            {% for p in prod%}
             <div class="col mb-4">
                 <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
+                    <img src="/media/{{ p.image }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{p.product_name|slice:"0:30"}}....</h5>
+                        <p class="card-text">{{p.desc|slice:"0:70"}}...</p>
                         <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
                         <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
                     </div>
                 </div>
             </div>
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-4">
-                <div class="card">
-                    <img src="{% static 'assets/images/chairprod1.jpeg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- <a href="#"><button type="button" class="btn btn-primary"  style=" margin-left: 15%;">Add to Cart</button></a>
-                        <a href="#"><button type="button" class="btn btn-primary" style=" margin-left: 15%;">View</button></a> -->
-                    </div>
-                </div>
-            </div>
+            {%endfor%}
+
             <a href="userhome"><button class="btn btn-primary btn-lg active " role="button" aria-pressed="true"> All Product</button></a>
         </div>
     </div>
-    <main role="main">
+    <main role="main" id="about">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <h1 class="display-3">About Us</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                <h1 class="display-3">About- FurnShop</h1>
+                <p>FurnShop Private Limited is an Indian e-commerce company, headquartered in Bengaluru , and incorporated in Singapore as a private limited company. The company initially focu sed on online book sales before expanding into other product
+                    categories such as consumer electronics , fashion, home essentials, groceries, and lifestyle products. The service competes primarily with Amazon's Indian subsidiary and dom estic rival Snapdeal.[5][6] As of March 2017, FurnShop held
+                    a 39.5% market share of Ind ia's e-commerce industry.[7] FurnShop has a dominant position in the apparel segment, bolst ered by its acquisition of Myntra, and was described as being "neck and neck" with Amazon in the sal e of electronics
+                    and mobile phones. In August 2018, American retail chain Walmart acquired a 77% cont rolling stake in FurnShop for US$16 billion, valuing FurnShop at around US$20 billion.[9] FurnShop is valued at $37.6 billion as of 2022.[10] It is
+                    planning to go public through a listing in the United States of America in 2023.[11]</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Welcome FurnShop &raquo;</a></p>
             </div>
         </div>
-
         <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying
-                        from up above. Yeah, you take me to utopia.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Standing on the frontline when the bombs start to fall. Heaven is jealous of our love, angels are crying from up above. Can't replace you with a million rings. Boy, when you're with me I'll give you a taste. There’s no going back.
-                        Before you met me I was alright but things were kinda heavy. Heavy is the head that wears the crown.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Playing ping pong all night long, everything's all neon and hazy. Yeah, she's so in demand. She's sweet as pie but if you break her heart. But down to earth. It's time to face the music I'm no longer your muse. I guess that I forgot
-                        I had a choice.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <h2>History</h2>
+            <p>FurnShop was founded in October 2007 by Sachin Bansal and Binny Bansal, alumni of the IIT, Delhi and former Amazon employees.[12][13][14] The company initially focused on online book sales with country-wide shipping. FurnShop slowly grew in
+                prominence and was receiving 100 orders per day by 2008.[15] In 2010, FurnShop acquired the Bangalore-based social book discovery service WeRead from Lulu.com.[16] In 2011, FurnShop acquired the digital distribution business Mime360.com[17]
+                and the digital content library of the Bollywood portal Chakpak.[18] Following the acquisition, FurnShop launched their DRM-free online music store Flyte in 2012. Due to competition from free streaming sites, Flyte was unsuccessful and
+                shut down in June 2013.[19][20][21][22] .With its eyes on India's retail market, FurnShop acquired Letsbuy, an online electronics retailer,[23] in 2012, and Myntra, an online fashion retailer, for US$280 million in May 2014.[24] Myntra
+                continues to operate alongside FurnShop as a standalone subsidiary focusing on separate market segments.[25] In February 2014, FurnShop partnered with Motorola Mobility to be the exclusive Indian retailer of its Moto G smartphone.[26]
+                Motorola also partnered with FurnShop on the Moto E, a phone targeted primarily towards emerging markets such as India. High demand for the phone following its midnight launch on 14 May caused the FurnShop website to crash.[27] FurnShop
+                subsequently held exclusive Indian launches for other smartphones, including the Xiaomi Mi 3 in July 2014 (whose initial release of 10,000 devices sold out in around 5 seconds),[28] and the Redmi 1S and Redmi Note in late 2014.[29][30][31][32]
+                On 6 October 2014, coinciding with the company's anniversary and the Diwali season,[33] FurnShop held a major sale that it promoted as "Big Billion Day". The event generated a surge of traffic, selling US$100 million worth of goods in
+                10 hours. The event received criticism via social media over technical issues experienced during the event and stock shortages.[34][35][36][37] In April 2015, FurnShop acquired Appiterate, a Delhi-based mobile marketing automation firm.
+                FurnShop stated that it would use Appiterate's technology to enhance its mobile services.[38] In December 2015, FurnShop purchased a minority stake in the digital mapping provider MapmyIndia.[39] In October 2015, FurnShop reprised the
+                Big Billion Days event as a multi-day event exclusive to the FurnShop app. FurnShop bolstered its supply chain and introduced more fulfillment centers to meet customer demand.[40] FurnShop achieved a gross merchandise volume of US$300
+                million during the event, with the largest volumes coming from fashion sales and the largest value coming from mobiles.[41] In 2016, FurnShop acquired the online fashion retailer Jabong.com from Rocket Internet for US$70 million and the
+                UPI mobile payments startup PhonePe.[42][43] In 2022, when PhonePe moved its entire base to India, FurnShop separated the ownership of PhonePe and shareholders in India and Singapore and the respective shareholders purchased shares of
+                PhonePe's India entity directly. It was announced that a cash payout of approximately $700 Mn was to the former and current employees who were holding PhonePe's shares.[44][45] </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">E-comShop's Team</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Member 1</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
+                            dui.
+                        </p>
+                        <!--                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>-->
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Member 2</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
+                            dui.
+                        </p>
+                        <!--                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>-->
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Member 2</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
+                            dui.
+                        </p>
+                        <!--                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>-->
+                    </div>
+
                 </div>
             </div>
-
             <hr>
-
         </div>
         <!-- /container -->
 

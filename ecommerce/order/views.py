@@ -21,7 +21,8 @@ def ordersave(request):
         order.save()
         cart.delete()
         totalitem = Cart.objects.all().count()
-        return render(request,'emptycart.html',{'totalitem':totalitem})
+        return render(request,'cart.html',{'totalitem':totalitem})
+        # return redirect('cart')
     else:
         return redirect('cart')
 def orderdetail(request):
@@ -30,6 +31,10 @@ def orderdetail(request):
     totalitem = Cart.objects.all().count()
     return render(request,'orderdetail.html',{'orderdetailsitem':orderdetailsitem,'orderdetails':orderdetails,'totalitem':totalitem})
 
+def cancle(request,Order_id):
+    orderdetails = Orderdetails.objects.get(id = Order_id)
+    orderdetails.delete()
+    return redirect('orderdetail')
 
 def bill(request,Orderid):
     order = Orderdetails.objects.filter(id=Orderid)

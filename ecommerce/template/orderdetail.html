@@ -148,6 +148,7 @@
                             <th>Total price</th>
                             <th>Status</th>
                             <th>Bill</th>
+                            <th></th>
                         </tr>
 
                     </thead>
@@ -163,7 +164,8 @@
                             <td>{{order.totalprice}}</td>
                             <td>{{order.status}}</td>
                             <td><a href="{% url 'bill' order.id %}" target="_blank"><i class="fa fa-file" aria-hidden="true"></i></a></td>
-
+                            <td><a href="{% url 'cancle' order.id %}" type="button" style="margin: 10px; color: black; font-weight: bold; ">Cancle</a></td>
+                            <!-- <td><a href="#"><button class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModal" style="margin: 10px;">Cancle</button></a></td> -->
                         </tr>
                         {% endfor %}
 
@@ -171,8 +173,8 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
+
     </section>
     {% else%}
     <section>
@@ -181,27 +183,6 @@
 
         <div class="text-center">
             <p>Please purchase some item. Go to product page.<a href="userhome">click here</a> </p>
-            <!-- <div class="tbl-header">
-                <table>
-                    <thead>
-
-                        <tr>
-
-                            <th>Image</th>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-
-                            <th colspan="4">Action</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-
-
-                    </tbody>
-                </table>
-            </div> -->
 
         </div>
     </section>

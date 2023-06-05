@@ -3,13 +3,16 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import Contact
 from cart.models import Cart
+from product.models import Product
 # Create your views here.
 def index(request):
+    prod = Product.objects.all()
     totalitem = Cart.objects.all().count()
-    return render(request,'index.html',{'totalitem':totalitem})
+    return render(request,'index.html',{'totalitem':totalitem,'prod':prod})
 def home(request):
+    prod = Product.objects.all()
     totalitem = Cart.objects.all().count()
-    return render(request,'home.html',{'totalitem':totalitem})
+    return render(request,'home.html',{'totalitem':totalitem,'prod':prod})
 def signup(request):
     totalitem = Cart.objects.all().count()
     return render(request,'signup.html',{'totalitem':totalitem})

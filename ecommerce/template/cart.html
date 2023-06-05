@@ -70,7 +70,7 @@
             font-weight: 300;
             font-size: 15px;
             color: #000000;
-            border-bottom: solid 2px rgba(9, 6, 6, 0.811);
+            border-bottom: solid 2px rgb(254, 254, 254);
         }
         /* demo styles */
         
@@ -128,16 +128,13 @@
 </head>
 
 <body>
-    {% if user.is_authenticated%}
+    {% if user.is_authenticated%} {%if totalitem%}
     <section>
         <!--for demo wrap-->
         <h1><u>Shopping Cart Details</u></h1>
         <p>The total items in cart {{totalitem}}.</p>
         <div class="text-center">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-                <a href="userhome"><button class="btn btn-primary" type="button" style="margin: 10px;">Add More Items</button></a>
-            </div>
+
             <div class="tbl-header">
                 <table>
                     <thead>
@@ -224,7 +221,18 @@
             </div>
         </div>
     </section>
-    {% else%}
+    {%else%}
+    <section>
+        <!--for demo wrap-->
+        <h1><u>Now! Your Cart is Empty.</u></h1>
+
+        <div class="text-center">
+            <p>Please Add some Produst. Go to product page.<a href="userhome">click here</a> </p>
+
+        </div>
+    </section>
+    {%endif%} {% else%}
+
 
     <section>
         <!--for demo wrap-->

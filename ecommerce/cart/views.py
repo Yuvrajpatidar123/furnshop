@@ -20,10 +20,6 @@ def add_to_cart(request, product_id):
         cart=Cart(productname=productname, price=price,image=image,productid=productid)
         cart.save()
         return redirect('userhome')
-def emptycart(request):
-    totalitem = Cart.objects.all().count()
-    
-    return render(request,'emptycart.html',{'totalitem':totalitem})
 
 
 def cart(request):
