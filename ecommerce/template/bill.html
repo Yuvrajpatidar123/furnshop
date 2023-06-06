@@ -79,8 +79,8 @@
         </div>
 
 
-        <div class="container ">
-            <!-- Example row of columns -->
+        <!-- <div class="container ">
+
             <div class="row ">
                 <div class="col-md-8 ">
                 </div>
@@ -94,30 +94,35 @@
             </div>
             <hr>
             <hr>
-        </div>
+        </div> -->
         <!-- /container -->
 
 
         <div class="container ">
             <!-- Example row of columns -->
             <div class="col align center ">
-                <div class="col-md-8 ">
+                <div class="col-md-12 ">
                     <h2>Order Details:</h2>
                     <h6>Order Id: {{order.id}}</h6>
                     <table>
                         <thead>
+                            <th></th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
                         </thead>
                         <tbody>
+                            <td><img src="/media//{{order.image}}" style="position:relative; width: 100px; height: 100px;"></td>
                             <td>{{order.productname}}</td>
                             <td>{{order.quantity}}</td>
                             <td>{{order.price}}</td>
                         </tbody>
                     </table>
-                    <div class="alert alert-dark " role="alert ">
-                        The Total price your Order is <b>{{order.totalprice}}/-</b> Pyment method Cash On Delivery.
+                    <div class="alert alert-light" style="margin-left: 73%; color: #000000;">
+                        The Total price your Order is <b>{{order.totalprice}}/-</b> .
+                    </div>
+                    <div class="alert alert-dark" role="alert ">
+                        Pyment method Online Payment using debit card/creadit card.
                     </div>
                 </div>
             </div>

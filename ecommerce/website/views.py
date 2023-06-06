@@ -49,8 +49,9 @@ def signinpage(request):
 
         user = auth.authenticate(username=usname,password=pas)
         if user is not None:
+
             auth.login(request,user)
-            
+        
             return redirect('userhome',)
         else:
             return render(request,'signup.html')

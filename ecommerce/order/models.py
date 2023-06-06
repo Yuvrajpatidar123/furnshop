@@ -11,10 +11,6 @@ STATUS_CHOICE = (
 # Create your models here.
 class Orderdetails(models.Model):
     Order_id = models.AutoField
-    username = models.CharField(max_length=50)
-    email = models.EmailField(max_length=75,unique=False)
-    mobile = models.CharField(max_length=15)
-    address = models.CharField(max_length=100)
     productname = models.CharField(max_length=500)
     quantity = models.IntegerField(default=1)
     price = models.IntegerField(default=0)

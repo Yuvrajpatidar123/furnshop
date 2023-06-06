@@ -12,12 +12,12 @@ def add_to_cart(request, product_id):
         image = p.image
         
         
-
+    totalprice = price
     try:
         cart = Cart.objects.get(productname=productname)
         return redirect('cart')
     except:
-        cart=Cart(productname=productname, price=price,image=image,productid=productid)
+        cart=Cart(productname=productname, price=price,image=image,productid=productid,totalprice=totalprice)
         cart.save()
         return redirect('userhome')
 
@@ -30,12 +30,14 @@ def cart(request):
 def plus_cart(request,cart_id):
     c = Cart.objects.get(id = cart_id)
     c.quantity+=1
+    c.totalprice = c.quantity*c.price
     c.save()
     return redirect('cart')
 def minus_cart(request,cart_id):
     c = Cart.objects.get(id = cart_id)
-    c.quantity-=1
+    c.quantity-=1    
     if c.quantity>=1:
+        c.totalprice = c.totalprice-c.price
         c.save()
     else:
         c.quantity=0
